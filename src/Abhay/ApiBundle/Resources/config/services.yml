@@ -1,0 +1,7 @@
+parameters:
+
+services:
+  abhay_api.bhakt_manager:
+    class: Abhay\ApiBundle\Manager\BhaktManager
+    arguments:
+      - @doctrine

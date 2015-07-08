@@ -1,0 +1,10 @@
+tests:
+    resource: Abhay\ApiBundle\Controller\BhaktsController
+    type:     rest
+tests_constrained:
+    resource: Abhay\ApiBundle\Controller\BhaktsController
+    type:     annotation
+    defaults: {_format: json}
+    requirements:
+        filtergroupId: \d+
+        _format: json|html|pdf
