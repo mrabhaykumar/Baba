@@ -1,14 +1,14 @@
 <?php
 
-namespace Practo\ApiBundle\Entity;
+namespace Abhay\ApiBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
-use Practo\ApiBundle\Entity\OfferCampaign;
+use Abhay\ApiBundle\Entity\Bhakt;
 
 /**
- * OfferCampaign Repository
+ * Bhakt Repository
  */
-class OfferCampaignRepository extends EntityRepository
+class BhaktRepository extends EntityRepository
 {
     
     public function retrieve($campaignId)
@@ -24,11 +24,9 @@ class OfferCampaignRepository extends EntityRepository
         return null;
     }
 
-    
     public function retrieveAll()
     {
-        $qb = $this->createQueryBuilder('e')
-       
+        $qb = $this->createQueryBuilder('e');
         $query = $qb->getQuery();
 
        return $query->getResult();

@@ -20,7 +20,8 @@ class Version20150707073457 extends AbstractMigration
             id INT AUTO_INCREMENT NOT NULL,
             name VARCHAR(20) NOT NULL ,
             email VARCHAR(100) DEFAULT NULL,
-            mobile VARCHAR(20) DEFAULT NULL,      
+            mobile VARCHAR(20) DEFAULT NULL,
+            gender VARCHAR(1) DEFAULT NULL,   
             PRIMARY KEY(id) )
             DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB");
 
@@ -40,23 +41,23 @@ class Version20150707073457 extends AbstractMigration
             mobile VARCHAR(20) DEFAULT NULL,
             gender varchar(6) DEFAULT NULL, 
             ashram_id INT DEFAULT NULL,
-            PRIMARY KEY(id) ),
-            ADD CONSTRAINT baba_ashram
-                FOREIGN KEY (ashram_id) REFERENCES ashram (id)
+            PRIMARY KEY(id),
+            CONSTRAINT baba_ashram
+                FOREIGN KEY (ashram_id) REFERENCES ashram (id))
             DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB");
 
          $this->addSql(
             "CREATE TABLE darshan (
             id INT AUTO_INCREMENT NOT NULL,
-            bhakt_id VARCHAR(20) NOT NULL ,
-            baba_id VARCHAR(100) DEFAULT NULL,
-            start_time DATETIME(20) DEFAULT NULL,  
-            end_time DATETIME(20) DEFAUTL NULL    
-            PRIMARY KEY(id) ),
-            ADD CONSTRAINT darshan_bhakt
+            start_time DATETIME DEFAULT NULL,  
+            end_time DATETIME DEFAULT NULL,
+            bhakt_id INT DEFAULT NULL,
+            baba_id INT DEFAULT NULL,
+            PRIMARY KEY(id),
+            CONSTRAINT darshan_bhakt
                 FOREIGN KEY (bhakt_id) REFERENCES bhakt (id),
-            ADD CONSTRAINT darshan_baba
-                FOREIGN KEY (baba_id) REFERENCES baba (id)
+            CONSTRAINT darshan_baba
+                FOREIGN KEY (baba_id) REFERENCES baba (id))
             DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB");
 
     }
@@ -66,10 +67,12 @@ class Version20150707073457 extends AbstractMigration
      */
     public function down(Schema $schema)
     {
-        
-        $this->addSql("DROP TABLE bhakt");
-        $this->addSql("DROP TABLE ashram");
-        $this->addSql("DROP TABLE BABA");
+
         $this->addSql("DROP TABLE darshan");
+        $this->addSql("DROP TABLE baba");
+        $this->addSql("DROP TABLE ashram");
+        $this->addSql("DROP TABLE bhakt");
+       
+        
     }
 }

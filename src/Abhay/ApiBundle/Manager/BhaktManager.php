@@ -8,6 +8,7 @@ use Symfony\Component\Validator\ValidatorInterface;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Validator\ConstraintViolation;
 use Symfony\Component\Validator\ConstraintViolationList;
+use Abhay\ApiBundle\Entity\Bhakt;
 
 /**
  * Bhakt Manager
@@ -25,8 +26,8 @@ class BhaktManager
      
     public function load($bhaktId = null)
     {
-         
-      return  array("abhay"=>"abhay","dog"=>"dog");
+        
+
        
     }
 
@@ -41,7 +42,8 @@ class BhaktManager
      */
     public function loadAll()
     {
-        
+        $er = $this->doctrine->getManager()->getRepository('AbhayApiBundle:Bhakt');
+        return $er->retrieveAll();
     }
 
     

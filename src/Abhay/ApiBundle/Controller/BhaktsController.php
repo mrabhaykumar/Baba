@@ -16,7 +16,11 @@ class BhaktsController extends Controller
         
 	    $bhaktManager = $this->get('abhay_api.bhakt_manager');
 
-	    return $bhaktManager->load();
-
+	    $bhakts = $bhaktManager->loadAll();
+	    $output = array();
+	    foreach ($bhakts as $bhakt ) {
+	    	$output[] = $bhakt->serialise();
+	    }
+	    return array("bhakts"=>$output);
     }
 }

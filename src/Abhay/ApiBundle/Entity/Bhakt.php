@@ -1,6 +1,6 @@
 <?php
 
-namespace Practo\ApiBundle\Entity;
+namespace Abhay\ApiBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -10,7 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Abhay\ApiBundle\Entity\Bhakt
  *
- * @ORM\Table(name="Bhakt")
+ * @ORM\Table(name="bhakt")
  * @ORM\Entity()
  * @ORM\Entity(repositoryClass="BhaktRepository")
  */
@@ -23,10 +23,12 @@ class Bhakt
     */
    protected $name;
     /**
-    *
-    *  @ORM\Column(name="id")
-    *
-    */
+     * @var integer $id
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
    protected $id;
     
    /**
