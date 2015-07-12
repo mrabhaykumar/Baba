@@ -8,13 +8,13 @@ use Symfony\Component\Validator\ExecutionContext;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Abhay\ApiBundle\Entity\Bhakt
+ * Abhay\ApiBundle\Entity\Ashram
  *
- * @ORM\Table(name="bhakt")
+ * @ORM\Table(name="ashram")
  * @ORM\Entity()
- * @ORM\Entity(repositoryClass="BhaktRepository")
+ * @ORM\Entity(repositoryClass="AshramRepository")
  */
-class Bhakt
+class Ashram
 {
     /**
     *
@@ -33,22 +33,10 @@ class Bhakt
     
    /**
     *
-    *  @ORM\Column(name="email")
+    *  @ORM\Column(name="address")
     *  @Assert\Length(min=1, max=100)
     */
-   protected $email;
-    /**
-    *
-    *  @ORM\Column(name="mobile")
-    *
-    */
-   protected $mobile;
-     /**
-    *
-    *  @ORM\Column(name="gender")
-    *
-    */
-   protected $gender;
+   protected $address;
    
    /**
      * Set PracticeId
@@ -93,9 +81,9 @@ class Bhakt
      *
      * @param integer $practiceId - Practice id
      */
-   public function setEmail($email)
+   public function setAddress($address)
    {
-    $this->email = $email;
+    $this->address = $address;
    }
    /**
      * Get PracticeId
@@ -103,48 +91,11 @@ class Bhakt
      * @return integer
      */
 
-   public function getEmail()
+   public function getAddress()
    {
-    return $this->email ;
+    return $this->address ;
    }
-   /**
-     * Set PracticeId
-     *
-     * @param integer $practiceId - Practice id
-     */
-   public function setGender($gender)
-   {
-    $this->gender = $gender;
-   }
-   /**
-     * Get PracticeId
-     *
-     * @return integer
-     */
-
-   public function getGender()
-   {
-    return $this->gender ;
-   }
-    /**
-     * Set PracticeId
-     *
-     * @param integer $practiceId - Practice id
-     */
-   public function setMobile($mobile)
-   {
-    $this->mobile = $mobile;
-   }
-   /**
-     * Get PracticeId
-     *
-     * @return integer
-     */
-
-   public function getMobile()
-   {
-    return $this->mobile ;
-   }
+   
 
    public function setAttributes($attributes)
    {
@@ -182,9 +133,8 @@ class Bhakt
         $data = array(
             'id' =>$this->getId(),
             'name'=>$this->getName(),
-            'gender'=>$this->getGender(),
-            'mobile'=>$this->getMobile(),
-            'email' =>$this->getEmail(),
+            'address'=>$this->getAddress(),
+            
         );
 
         return $data;
@@ -192,7 +142,6 @@ class Bhakt
     }
     public function isEditableAttribute($attrSnake)
     {
-        return in_array($attrSnake, array('name','gender',
-            'mobile','email',));
+        return in_array($attrSnake, array('name','address',));
     }
 }

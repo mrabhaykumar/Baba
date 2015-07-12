@@ -23,4 +23,15 @@ class BhaktsController extends Controller
 	    }
 	    return array("bhakts"=>$output);
     }
+    public function postBhaktsAction()
+    {
+        
+	    $postData = $this->getRequest()->request->all();
+        $bhaktManager = $this->get('abhay_api.bhakt_manager');
+        $bhakt = $bhaktManager->add($postData);
+        return View::create($bhakt->serialise(),
+        	   Codes::HTTP_CREATED);
+     }
+
+
 }

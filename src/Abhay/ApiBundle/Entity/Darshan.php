@@ -8,20 +8,15 @@ use Symfony\Component\Validator\ExecutionContext;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Abhay\ApiBundle\Entity\Bhakt
+ * Abhay\ApiBundle\Entity\Darshan
  *
- * @ORM\Table(name="bhakt")
+ * @ORM\Table(name="darshan")
  * @ORM\Entity()
- * @ORM\Entity(repositoryClass="BhaktRepository")
+ * @ORM\Entity(repositoryClass="DarshanRepository")
  */
-class Bhakt
+class Darshan
 {
-    /**
-    *
-    *  @ORM\Column(name="name", type="string", length=100, unique = true, nullable=false)
-    *  @Assert\Length(min=1, max=100)
-    */
-   protected $name;
+   
     /**
      * @var integer $id
      *
@@ -31,44 +26,30 @@ class Bhakt
      */
    protected $id;
     
-   /**
-    *
-    *  @ORM\Column(name="email")
-    *  @Assert\Length(min=1, max=100)
-    */
-   protected $email;
+  
     /**
     *
-    *  @ORM\Column(name="mobile")
-    *
+    *  @ORM\Column(name="bhakt_id")
     */
-   protected $mobile;
-     /**
-    *
-    *  @ORM\Column(name="gender")
-    *
-    */
-   protected $gender;
+   protected $bhaktId;
    
-   /**
-     * Set PracticeId
-     *
-     * @param integer $practiceId - Practice id
-     */
-   public function setName($name)
-   {
-    $this->name = $name;
-   }
-   /**
-     * Get PracticeId
-     *
-     * @return integer
-     */
+    /**
+    *
+    *  @ORM\Column(name="baba_id")
+    */
+   protected $babaId;
 
-   public function getName()
-   {
-    return $this->name ;
-   }
+    /**
+    *
+    *  @ORM\Column(name="start_time",type="datetime", nullable=false)
+    */
+   protected $startTime;
+
+    /**
+    *
+    *  @ORM\Column(name="end_time",type="datetime", nullable=false)
+    */
+   protected $endTime;
    /**
      * Set PracticeId
      *
@@ -78,72 +59,39 @@ class Bhakt
    {
     $this->id = $id;
    }
-   /**
-     * Get PracticeId
-     *
-     * @return integer
-     */
-
    public function getId()
    {
     return $this->id ;
    }
-   /**
-     * Set PracticeId
-     *
-     * @param integer $practiceId - Practice id
-     */
-   public function setEmail($email)
+   public function setBhaktId($id)
    {
-    $this->email = $email;
+    $this->bhaktId = $id;
    }
-   /**
-     * Get PracticeId
-     *
-     * @return integer
-     */
-
-   public function getEmail()
+   public function getBhaktId()
    {
-    return $this->email ;
+    return $this->bhaktId;
    }
-   /**
-     * Set PracticeId
-     *
-     * @param integer $practiceId - Practice id
-     */
-   public function setGender($gender)
+   public function setBabaId($id)
    {
-    $this->gender = $gender;
+    $this->babaId = $id;
    }
-   /**
-     * Get PracticeId
-     *
-     * @return integer
-     */
-
-   public function getGender()
+   public function getBabaId()
    {
-    return $this->gender ;
+    return $this->babaId ;
+   }public function setStartTime($time)
+   {
+    $this->startTime = new \DateTime($time);
    }
-    /**
-     * Set PracticeId
-     *
-     * @param integer $practiceId - Practice id
-     */
-   public function setMobile($mobile)
+   public function getStartTime()
    {
-    $this->mobile = $mobile;
+    return $this->startTime ;
+   }public function setEndTime($time)
+   {
+    $this->endTime = new \DateTime($time);
    }
-   /**
-     * Get PracticeId
-     *
-     * @return integer
-     */
-
-   public function getMobile()
+   public function getEndTime()
    {
-    return $this->mobile ;
+    return $this->endTime ;
    }
 
    public function setAttributes($attributes)
@@ -181,10 +129,11 @@ class Bhakt
     {
         $data = array(
             'id' =>$this->getId(),
-            'name'=>$this->getName(),
-            'gender'=>$this->getGender(),
-            'mobile'=>$this->getMobile(),
-            'email' =>$this->getEmail(),
+            'baba_id'=>$this->getBabaId(),
+            'bhakt_id'=>$this->getBhaktId(),
+            'start_time'=>$this->getStartTime(),
+            'end_time'=>$this->getEndTime(),
+            
         );
 
         return $data;
@@ -192,7 +141,6 @@ class Bhakt
     }
     public function isEditableAttribute($attrSnake)
     {
-        return in_array($attrSnake, array('name','gender',
-            'mobile','email',));
+        return in_array($attrSnake, array('baba_id','bhakt_id','start_time', 'end_time',));
     }
 }

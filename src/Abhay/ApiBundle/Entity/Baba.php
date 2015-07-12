@@ -8,13 +8,13 @@ use Symfony\Component\Validator\ExecutionContext;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Abhay\ApiBundle\Entity\Bhakt
+ * Abhay\ApiBundle\Entity\Baba
  *
- * @ORM\Table(name="bhakt")
+ * @ORM\Table(name="baba")
  * @ORM\Entity()
- * @ORM\Entity(repositoryClass="BhaktRepository")
+ * @ORM\Entity(repositoryClass="BabaRepository")
  */
-class Bhakt
+class Baba
 {
     /**
     *
@@ -49,11 +49,36 @@ class Bhakt
     *
     */
    protected $gender;
-   
-   /**
-     * Set PracticeId
+       /**
+    *
+    *  @ORM\Column(name="ashram_id")
+    *
+    */
+   protected $ashramId;
+    /**
+     * Set Name
      *
-     * @param integer $practiceId - Practice id
+     * 
+     */
+   public function setAshramId($ashramId)
+   {
+    $this->ashramId = $ashramId;
+   }
+   /**
+     * Get PracticeId
+     *
+     * @return integer
+     */
+
+   public function getAshramId()
+   {
+    return $this->ashramId;
+   }
+
+   /**
+     * Set Name
+     *
+     * 
      */
    public function setName($name)
    {
@@ -185,6 +210,7 @@ class Bhakt
             'gender'=>$this->getGender(),
             'mobile'=>$this->getMobile(),
             'email' =>$this->getEmail(),
+            'ashram_id'=>$this->getAshramId(),
         );
 
         return $data;
@@ -193,6 +219,6 @@ class Bhakt
     public function isEditableAttribute($attrSnake)
     {
         return in_array($attrSnake, array('name','gender',
-            'mobile','email',));
+            'mobile','email','ashram_id'));
     }
 }

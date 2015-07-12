@@ -5,3 +5,15 @@ services:
     class: Abhay\ApiBundle\Manager\BhaktManager
     arguments:
       - @doctrine
+  abhay_api.ashram_manager:
+    class: Abhay\ApiBundle\Manager\AshramManager
+    arguments:
+      - @doctrine
+  abhay_api.baba_manager:
+    class: Abhay\ApiBundle\Manager\BabaManager
+    arguments:
+      - @doctrine
+  abhay_api.darshan_manager:
+    class: Abhay\ApiBundle\Manager\DarshanManager
+    arguments:
+      - @doctrine

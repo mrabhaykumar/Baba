@@ -8,12 +8,12 @@ use Symfony\Component\Validator\ValidatorInterface;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Validator\ConstraintViolation;
 use Symfony\Component\Validator\ConstraintViolationList;
-use Abhay\ApiBundle\Entity\Bhakt;
+use Abhay\ApiBundle\Entity\Ashram;
 
 /**
  * Bhakt Manager
  */
-class BhaktManager 
+class AshramManager 
 {
    
     protected $doctrine;
@@ -38,17 +38,17 @@ class BhaktManager
      */
     public function loadAll()
     {
-        $er = $this->doctrine->getManager()->getRepository('AbhayApiBundle:Bhakt');
+        $er = $this->doctrine->getManager()->getRepository('AbhayApiBundle:Ashram');
         return $er->retrieveAll();
     }
     public function add($requestParams)
     {
-        $bhakt = new bhakt();
-        $bhakt->setAttributes($requestParams);
+        $ashram = new Ashram();
+        $ashram->setAttributes($requestParams);
         $em = $this->doctrine->getManager();
-        $em->persist($bhakt);
+        $em->persist($ashram);
         $em->flush();
-        return $bhakt;
+        return $ashram;
     }
 
     

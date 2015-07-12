@@ -1,8 +1,38 @@
-tests:
+bhakts:
     resource: Abhay\ApiBundle\Controller\BhaktsController
     type:     rest
-tests_constrained:
+bhakts_constrained:
     resource: Abhay\ApiBundle\Controller\BhaktsController
+    type:     annotation
+    defaults: {_format: json}
+    requirements:
+        filtergroupId: \d+
+        _format: json|html|pdf
+ashrams:
+    resource: Abhay\ApiBundle\Controller\AshramsController
+    type:     rest
+ashrams_constrained:
+    resource: Abhay\ApiBundle\Controller\AshramsController
+    type:     annotation
+    defaults: {_format: json}
+    requirements:
+        filtergroupId: \d+
+        _format: json|html|pdf
+babas:
+    resource: Abhay\ApiBundle\Controller\BabasController
+    type:     rest
+babas_constrained:
+    resource: Abhay\ApiBundle\Controller\BabasController
+    type:     annotation
+    defaults: {_format: json}
+    requirements:
+        filtergroupId: \d+
+        _format: json|html|pdf
+darshan:
+    resource: Abhay\ApiBundle\Controller\DarshansController
+    type:     rest
+darshans_constrained:
+    resource: Abhay\ApiBundle\Controller\DarshansController
     type:     annotation
     defaults: {_format: json}
     requirements:
