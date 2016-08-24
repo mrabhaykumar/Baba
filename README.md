@@ -9,3 +9,4 @@ Things I learnt from this project :
 3. hosts configuration
 4. crud and apis(all basic things like migration, entity, manager, controller , routing, services injection, test framworks etcs)
 5. Composer concept
+6. done
